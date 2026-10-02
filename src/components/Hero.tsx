@@ -8,11 +8,11 @@ export function Hero() {
   return (
     <section className="relative overflow-hidden pt-20 pb-32">
       {/* Background Hero Photo */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+      <div className="absolute inset-x-0 top-0 h-[100svh] md:h-auto md:bottom-0 overflow-hidden pointer-events-none">
         <img
           src="https://vibe.filesafe.space/1781757993930865636/attachments/73ece70b-ff58-43a3-86fa-a7e357b0c7c0.png"
           alt="Benji Pow"
-          className="w-full h-full object-cover object-top opacity-40 md:opacity-50"
+         className="w-full h-full object-cover object-top opacity-60 md:opacity-50"
         />
         {/* Gradients to keep headline & buttons readable while leaving photo clearly visible */}
         <div className="absolute inset-0 bg-gradient-to-b from-background/30 via-background/50 to-background" />
