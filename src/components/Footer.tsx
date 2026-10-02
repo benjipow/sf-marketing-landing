@@ -42,6 +42,9 @@ export function Footer() {
                 Graphics & Media
               </a>
             </li>
+                        </li>
+          </ul>
+        </div>
         </div>
 
         <div>
