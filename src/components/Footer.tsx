@@ -98,7 +98,7 @@ export function Footer() {
         transition={{ duration: 0.6, delay: 0.2 }}
         className="flex flex-col md:flex-row items-center justify-between pt-8 border-t border-border/40 text-xs text-muted-foreground"
       >
-        <p>© 2026 Mason Interactive, Inc.</p>
+        <p>© 2026 BENJI POW</p>
         <p>
           <a href="#" className="hover:text-primary">
             Privacy Policy
