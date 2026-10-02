@@ -103,11 +103,11 @@ export function Hero() {
                 afterAlt="Skin by LaFlamme - After redesign"
               />
             </div>
-            <img
-              src="https://vibe.filesafe.space/1781757993930865636/assets/e346ce46-9a97-4dc5-912d-ce008f215746.jpg"
-              alt="Work 3"
-              className="w-full h-96 object-cover rounded-xl"
-            />
+           <img
+  src="/pewa-retreats.jpg"
+  alt="PEWA Retreats website design by Benji Pow"
+  className="w-full h-96 object-cover object-top rounded-xl"
+/>
           </motion.div>
         </div>
       </div>
