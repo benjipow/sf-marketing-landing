@@ -1,47 +1,27 @@
-# vibe-template
+# sf-marketing-landing
 
-A React + TypeScript template powered by Vite, Tailwind CSS, and shadcn/ui components.
+Marketing landing page (Vite + React + Tailwind), exported from GoHighLevel and hosted on Cloudflare Workers.
 
-## Requirements
-
-- Node.js 18+ (LTS recommended)
-- npm
-
-## Getting started
-
-Install dependencies:
+## Local development
 
 ```bash
 npm install
+npm run dev        # http://localhost:8080
+npm run build      # production build -> dist/
 ```
 
-Run the development server:
+## Deployment
+
+Every push to `main` deploys automatically via Cloudflare's GitHub integration.
+
+- Build command: `npm run build`
+- Deploy command: `npx wrangler deploy`
+- Config: `wrangler.jsonc` (serves `dist/` as a single-page app)
+
+## One-time: move images off GHL
+
+Images are still hosted on GHL's CDN. Run this once, then commit the result:
 
 ```bash
-npm run dev
+node scripts/localize-images.mjs
 ```
-
-## Available scripts
-
-- `npm run dev` - start Vite in development mode
-- `npm run build` - create a production build
-- `npm run build:dev` - create a development-mode build
-- `npm run preview` - preview the production build locally
-- `npm run lint` - run ESLint checks
-- `npm run test` - run Vitest tests once
-- `npm run test:watch` - run Vitest in watch mode
-
-## Verification commands
-
-Use these to verify repository health:
-
-```bash
-npm run lint
-npm run test
-npm run build
-npx tsc --noEmit
-```
-
-## Lockfile policy
-
-This repository does not track `package-lock.json`.

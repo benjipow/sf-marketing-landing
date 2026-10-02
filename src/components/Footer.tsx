@@ -1,0 +1,139 @@
+import { motion } from "framer-motion";
+
+export function Footer() {
+  return (
+    <footer className="border-t border-border/40 py-16 px-8 max-w-7xl mx-auto">
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-50px" }}
+        transition={{ duration: 0.6 }}
+        className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-24"
+      >
+        <div>
+          <h3 className="text-2xl font-serif font-bold mb-8">
+            BENJIPOW<span className="text-primary text-xs align-top">®</span>
+          </h3>
+          <p className="text-sm text-muted-foreground mb-4">
+            Brooklyn
+            <br />
+            20 Jay Street, Suite 1115
+            <br />
+            Brooklyn, NY 11201
+          </p>
+          <p className="text-sm text-muted-foreground">
+            Charlotte
+            <br />
+            1018 Jay Street, Suite 470
+            <br />
+            Charlotte, NC 28208
+          </p>
+        </div>
+
+        <div>
+          <h4 className="text-xs font-bold tracking-widest uppercase mb-6">
+            Our Approach
+          </h4>
+          <ul className="space-y-4 text-sm text-muted-foreground">
+            <li>
+              <a href="#" className="hover:text-primary transition-colors">
+                Lead Generation
+              </a>
+            </li>
+            <li>
+              <a href="#" className="hover:text-primary transition-colors">
+                Customer Acquisition
+              </a>
+            </li>
+            <li>
+              <a href="#" className="hover:text-primary transition-colors">
+                Shopping
+              </a>
+            </li>
+            <li>
+              <a href="#" className="hover:text-primary transition-colors">
+                Remarketing
+              </a>
+            </li>
+            <li>
+              <a href="#" className="hover:text-primary transition-colors">
+                Brand Awareness
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 className="text-xs font-bold tracking-widest uppercase mb-6">
+            Paid Media
+          </h4>
+          <ul className="space-y-4 text-sm text-muted-foreground">
+            <li>
+              <a href="#" className="hover:text-primary transition-colors">
+                Google
+              </a>
+            </li>
+            <li>
+              <a href="#" className="hover:text-primary transition-colors">
+                Facebook
+              </a>
+            </li>
+            <li>
+              <a href="#" className="hover:text-primary transition-colors">
+                Instagram
+              </a>
+            </li>
+            <li>
+              <a href="#" className="hover:text-primary transition-colors">
+                Amazon
+              </a>
+            </li>
+            <li>
+              <a href="#" className="hover:text-primary transition-colors">
+                YouTube
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 className="text-xs font-bold tracking-widest uppercase mb-6">
+            Resources
+          </h4>
+          <ul className="space-y-4 text-sm text-muted-foreground">
+            <li>
+              <a href="#" className="hover:text-primary transition-colors">
+                Case Studies
+              </a>
+            </li>
+            <li>
+              <a href="#" className="hover:text-primary transition-colors">
+                Blog
+              </a>
+            </li>
+            <li>
+              <a href="#" className="hover:text-primary transition-colors">
+                On-Demand Webinars
+              </a>
+            </li>
+          </ul>
+        </div>
+      </motion.div>
+
+      <motion.div
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6, delay: 0.2 }}
+        className="flex flex-col md:flex-row items-center justify-between pt-8 border-t border-border/40 text-xs text-muted-foreground"
+      >
+        <p>© 2026 Mason Interactive, Inc.</p>
+        <p>
+          <a href="#" className="hover:text-primary">
+            Privacy Policy
+          </a>
+        </p>
+      </motion.div>
+    </footer>
+  );
+}
