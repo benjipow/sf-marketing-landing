@@ -1,88 +1,278 @@
-import { motion } from "framer-motion";
+const css = `
+/* ===== Scoped to .bb so it won't clash with the rest of your site ===== */
+  .bb {
+    --bg: #1F1F1F;        /* charcoal background */
+    --panel: #262626;     /* raised dark panel */
+    --line: #3A3A3A;      /* dividers */
+    --lime: #D2EB8C;
+    --lavender: #C6B7F6;
+    --orange: #EF8246;
+    --ink: #1A1A1A;       /* text on light colors */
+    --white: #F2F2F2;     /* text on dark */
+    --muted: #A8A8A8;
+    --display: "Playfair Display", Georgia, "Times New Roman", serif;
+    --body: "Inter", "Helvetica Neue", Arial, sans-serif;
+    font-family: var(--body);
+    color: var(--white);
+    background: var(--bg);
+    -webkit-font-smoothing: antialiased;
+  }
+  .bb *, .bb *::before, .bb *::after { box-sizing: border-box; }
+  .bb a:focus-visible { outline: 3px solid var(--lime); outline-offset: 4px; }
 
-const services = [
-  {
-    num: "01",
-    title: "Creative Direction",
-    description:
-      "Brand positioning, campaign concepts, messaging, content direction, and helping you decide what the business should actually say and look like.",
-  },
-  {
-    num: "02",
-    title: "Brand Strategy & Messaging",
-    description:
-      "Clarifying your audience, offer, positioning, customer journey, website copy, and the message that makes the right people say, “This is for me.”",
-  },
-  {
-    num: "03",
-    title: "Website & Digital Presence",
-    description:
-      "Website strategy, website design direction, SEO, Google Business Profile, landing pages, and making your digital real estate actually work together.",
-  },
-  {
-    num: "04",
-    title: "Content & Social Media Marketing",
-    description:
-      "Content strategy, campaigns, social media concepts, carousels, email marketing, launch content, and turning one idea into multiple pieces of marketing.",
-  },
-  {
-    num: "05",
-    title: "AI, Systems & Automation",
-    description:
-      "AI workflows, custom prompts, marketing automations, content systems, operational workflows, and tools that help you stop manually doing everything.",
-  },
-  {
-    num: "06",
-    title: "Product, Offer & Launch Development",
-    description:
-      "Turning an idea into something sellable—from offer structure and pricing to curriculum, digital products, launch strategy, landing pages, and campaign execution.",
-  },
-];
+  /* ---------- Ticker ---------- */
+  .bb-ticker {
+    background: var(--lime);
+    color: var(--ink);
+    overflow: hidden;
+    white-space: nowrap;
+    padding: 16px 0;
+    font-family: var(--display);
+    text-transform: uppercase;
+    font-size: clamp(18px, 2.2vw, 26px);
+  }
+  .bb-ticker__track { display: inline-block; animation: bb-scroll 40s linear infinite; }
+  .bb-ticker__track span { padding: 0 1.2em; }
+  @keyframes bb-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  @media (prefers-reduced-motion: reduce) { .bb-ticker__track { animation: none; } }
 
-export function Services() {
+  /* ---------- Highlight ---------- */
+  .bb-hero {
+    padding: clamp(64px, 10vw, 140px) clamp(20px, 5vw, 72px) clamp(56px, 8vw, 110px);
+    text-align: center;
+  }
+  .bb-hero__kicker {
+    display: inline-block;
+    background: var(--lavender);
+    color: var(--ink);
+    padding: 10px 20px;
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: 15px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin: 0 0 32px;
+  }
+  .bb-hero__title {
+    font-family: var(--display);
+    font-weight: 400;
+    text-transform: uppercase;
+    line-height: 0.92;
+    letter-spacing: -0.01em;
+    font-size: clamp(56px, 11vw, 180px);
+    margin: 0;
+  }
+  .bb-hero__title .amp { font-style: italic; color: var(--orange); }
+  .bb-hero__grid {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: clamp(32px, 6vw, 96px);
+    margin-top: clamp(48px, 6vw, 80px);
+    align-items: center;
+    text-align: left;
+  }
+  .bb-hero__body p {
+    font-size: clamp(17px, 1.5vw, 20px);
+    line-height: 1.6;
+    color: var(--white);
+    max-width: 36em;
+    margin: 0 0 1em;
+  }
+  .bb-hero__steps {
+    background: var(--lavender);
+    color: var(--ink);
+    border-radius: 50% 50% 32px 32px / 38% 38% 32px 32px;
+    padding: clamp(56px, 6vw, 80px) clamp(28px, 4vw, 48px) clamp(32px, 4vw, 48px);
+    margin: 0;
+    list-style: none;
+    text-align: center;
+  }
+  .bb-hero__steps li {
+    font-family: var(--display);
+    text-transform: uppercase;
+    font-size: clamp(24px, 2.6vw, 36px);
+    line-height: 1.1;
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(26, 26, 26, 0.2);
+  }
+  .bb-hero__steps li:last-child { border-bottom: 0; font-style: italic; }
+  .bb-btn {
+    display: inline-block;
+    margin-top: 16px;
+    background: var(--orange);
+    color: var(--ink);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 15px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 18px 32px;
+    border-radius: 999px;
+    transition: background 0.2s;
+  }
+  .bb-btn:hover { background: var(--lime); }
+
+  /* ---------- What I do 1-5 ---------- */
+  .bb-list { padding: clamp(56px, 8vw, 112px) clamp(20px, 5vw, 72px); }
+  .bb-list__head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 24px;
+    flex-wrap: wrap;
+    margin-bottom: clamp(32px, 5vw, 56px);
+  }
+  .bb-list__title {
+    font-family: var(--display);
+    font-weight: 400;
+    text-transform: uppercase;
+    font-size: clamp(48px, 8vw, 120px);
+    line-height: 0.9;
+    margin: 0;
+  }
+  .bb-list__intro { font-size: 18px; line-height: 1.55; color: var(--muted); max-width: 26em; margin: 0; }
+  .bb-item {
+    display: grid;
+    grid-template-columns: clamp(80px, 12vw, 170px) 1fr 1.1fr auto;
+    gap: clamp(16px, 3vw, 48px);
+    align-items: center;
+    border-top: 1px solid var(--line);
+    padding: clamp(28px, 3vw, 44px) 0;
+  }
+  .bb-item:last-child { border-bottom: 1px solid var(--line); }
+  .bb-item__num {
+    font-family: var(--display);
+    font-size: clamp(80px, 11vw, 170px);
+    line-height: 0.8;
+  }
+  .bb-item:nth-child(5n+2) .bb-item__num { color: var(--lime); }
+  .bb-item:nth-child(5n+3) .bb-item__num { color: var(--lavender); }
+  .bb-item:nth-child(5n+4) .bb-item__num { color: var(--orange); }
+  .bb-item:nth-child(5n+5) .bb-item__num { color: var(--lime); }
+  .bb-item:nth-child(5n+6) .bb-item__num { color: var(--lavender); }
+  .bb-item__name {
+    font-family: var(--display);
+    font-weight: 400;
+    text-transform: uppercase;
+    font-size: clamp(28px, 3.2vw, 48px);
+    line-height: 1;
+    margin: 0;
+  }
+  .bb-item__desc { font-size: 17px; line-height: 1.6; color: var(--muted); margin: 0; max-width: 30em; }
+  .bb-item__link {
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--white);
+    text-decoration: none;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 12px 20px;
+    white-space: nowrap;
+    transition: background 0.2s, color 0.2s, border-color 0.2s;
+  }
+  .bb-item__link:hover { background: var(--lime); color: var(--ink); border-color: var(--lime); }
+
+  /* ---------- Mobile ---------- */
+  @media (max-width: 860px) {
+    .bb-hero__grid { grid-template-columns: 1fr; }
+    .bb-item {
+      grid-template-columns: auto 1fr;
+      grid-template-areas: "num name" "num desc" "num link";
+      row-gap: 14px;
+      align-items: start;
+    }
+    .bb-item__num  { grid-area: num; }
+    .bb-item__name { grid-area: name; }
+    .bb-item__desc { grid-area: desc; }
+    .bb-item__link { grid-area: link; justify-self: start; }
+  }
+`;
+
+const Services = (_props: Record<string, unknown>) => {
   return (
-    <section className="py-24 px-8 max-w-7xl mx-auto">
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-100px" }}
-        transition={{ duration: 0.6 }}
-        className="mb-16 max-w-3xl"
-      >
-        <h2 className="text-sm font-bold tracking-widest uppercase text-primary mb-4">
-          What I Do
-        </h2>
-        <h3 className="md:text-5xl font-serif text-3xl leading-tight">
-          I help business owners turn “I know I need to do this” into “it’s
-          finally done.”{" "}
-          <span className="text-muted-foreground italic">
-            —without you having to figure everything out alone.
-          </span>
-        </h3>
-      </motion.div>
+      <section className="bb" aria-labelledby="bb-title">
+        <style>{css}</style>
 
-      <div className="flex flex-col gap-px bg-[#2a2420] rounded-2xl overflow-hidden">
-        {services.map((service, index) => (
-          <motion.div
-            key={service.num}
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.5, delay: index * 0.08 }}
-            className="bg-[#332A24] px-8 md:px-12 py-8 md:py-10 group hover:bg-[#3d332d] transition-colors cursor-pointer flex flex-col md:flex-row md:items-center gap-4 md:gap-10"
-          >
-            <span className="text-sm font-mono text-muted-foreground md:w-16 shrink-0">
-              /{service.num}
-            </span>
-            <h3 className="md:text-2xl font-serif font-medium leading-snug md:w-[340px] lg:w-[400px] shrink-0 text-5xl">
-              {service.title}
-            </h3>
-            <p className="text-sm text-muted-foreground leading-relaxed md:flex-1">
-              {service.description}
-            </p>
-          </motion.div>
-        ))}
-      </div>
-    </section>
+        {/* Ticker */}
+        <div className="bb-ticker" aria-hidden="true">
+          <div className="bb-ticker__track">
+            <span>Your business bestie for solopreneurs ✦</span>
+            <span>To-do list into ta-da ✦</span>
+            <span>You don't have to figure this out alone ✦</span>
+            <span>Your business bestie for solopreneurs ✦</span>
+            <span>To-do list into ta-da ✦</span>
+            <span>You don't have to figure this out alone ✦</span>
+          </div>
+        </div>
+
+        {/* Highlight */}
+        <div className="bb-hero">
+          <p className="bb-hero__kicker">Your Business Bestie for Solopreneurs</p>
+          <h2 className="bb-hero__title" id="bb-title">A second brain<br /><span className="amp">in</span> the room</h2>
+
+          <div className="bb-hero__grid">
+            <div className="bb-hero__body">
+              <p>You're great at what you do. You're also the marketer, the web person, the copywriter, and the one who said "I'll do it later" about all of it.</p>
+              <p>I run a small business too, so I know the feeling. I'm the person you call when you've been staring at the same problem for weeks and need someone to say, "Okay, here's what we're actually going to do."</p>
+              <a className="bb-btn" href="#contact">Book a free call</a>
+            </div>
+            <ol className="bb-hero__steps" aria-label="How we work together">
+              <li>Your options</li>
+              <li>What they cost</li>
+              <li>What I'd do first</li>
+              <li>Then we get it done</li>
+            </ol>
+          </div>
+        </div>
+
+        {/* What I do */}
+        <div className="bb-list">
+          <div className="bb-list__head">
+            <h2 className="bb-list__title">What I do</h2>
+            <p className="bb-list__intro">For owner-operators and one-person businesses who are ready to stop carrying all of it alone.</p>
+          </div>
+
+          <div className="bb-item">
+            <div className="bb-item__num">1</div>
+            <h3 className="bb-item__name">Get found on Google and AI search</h3>
+            <p className="bb-item__desc">SEO, AEO and GEO so people searching Google, ChatGPT and AI tools find you, not the shop down the street.</p>
+            <a className="bb-item__link" href="#seo">Get found</a>
+          </div>
+
+          <div className="bb-item">
+            <div className="bb-item__num">2</div>
+            <h3 className="bb-item__name">Website copy that sounds like you</h3>
+            <p className="bb-item__desc">I audit and rewrite your site so it speaks to the clients you actually want, not "quality service you can trust."</p>
+            <a className="bb-item__link" href="#copy">Fix my copy</a>
+          </div>
+
+          <div className="bb-item">
+            <div className="bb-item__num">3</div>
+            <h3 className="bb-item__name">Branding and messaging</h3>
+            <p className="bb-item__desc">Get clear on who you serve, what makes you different, and how to say it so people remember you.</p>
+            <a className="bb-item__link" href="#brand">Sharpen my brand</a>
+          </div>
+
+          <div className="bb-item">
+            <div className="bb-item__num">4</div>
+            <h3 className="bb-item__name">Content that has a plan</h3>
+            <p className="bb-item__desc">Know what to post, why, and when, with ideas built around your business instead of trends you can't keep up with.</p>
+            <a className="bb-item__link" href="#content">Plan my content</a>
+          </div>
+
+          <div className="bb-item">
+            <div className="bb-item__num">5</div>
+            <h3 className="bb-item__name">Creative help, done for you</h3>
+            <p className="bb-item__desc">Graphics, captions, emails, forms. The small tasks that pile up and quietly cost you clients.</p>
+            <a className="bb-item__link" href="#creative">Hand it off</a>
+          </div>
+        </div>
+
+      </section>
   );
-}
+};
+
+export { Services };
+export default Services;
