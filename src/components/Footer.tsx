@@ -14,58 +14,39 @@ export function Footer() {
           <h3 className="text-2xl font-serif font-bold mb-8">
             BENJIPOW<span className="text-primary text-xs align-top">®</span>
           </h3>
-          <p className="text-sm text-muted-foreground mb-4">
-            Brooklyn
-            <br />
-            20 Jay Street, Suite 1115
-            <br />
-            Brooklyn, NY 11201
-          </p>
-          <p className="text-sm text-muted-foreground">
-            Charlotte
-            <br />
-            1018 Jay Street, Suite 470
-            <br />
-            Charlotte, NC 28208
-          </p>
+        
         </div>
 
         <div>
           <h4 className="text-xs font-bold tracking-widest uppercase mb-6">
-            Our Approach
+            My Approach
           </h4>
           <ul className="space-y-4 text-sm text-muted-foreground">
             <li>
               <a href="#" className="hover:text-primary transition-colors">
-                Lead Generation
+               Google & AI Visibility
               </a>
             </li>
             <li>
               <a href="#" className="hover:text-primary transition-colors">
-                Customer Acquisition
+               Brand Strategy & Messaging
               </a>
             </li>
             <li>
               <a href="#" className="hover:text-primary transition-colors">
-                Shopping
+                AI Coaching
               </a>
             </li>
             <li>
               <a href="#" className="hover:text-primary transition-colors">
-                Remarketing
+                Graphics & Media
               </a>
             </li>
-            <li>
-              <a href="#" className="hover:text-primary transition-colors">
-                Brand Awareness
-              </a>
-            </li>
-          </ul>
         </div>
 
         <div>
           <h4 className="text-xs font-bold tracking-widest uppercase mb-6">
-            Paid Media
+            FOLLOW ME
           </h4>
           <ul className="space-y-4 text-sm text-muted-foreground">
             <li>
@@ -75,17 +56,7 @@ export function Footer() {
             </li>
             <li>
               <a href="#" className="hover:text-primary transition-colors">
-                Facebook
-              </a>
-            </li>
-            <li>
-              <a href="#" className="hover:text-primary transition-colors">
                 Instagram
-              </a>
-            </li>
-            <li>
-              <a href="#" className="hover:text-primary transition-colors">
-                Amazon
               </a>
             </li>
             <li>
@@ -113,7 +84,7 @@ export function Footer() {
             </li>
             <li>
               <a href="#" className="hover:text-primary transition-colors">
-                On-Demand Webinars
+                Self-Paced Programs
               </a>
             </li>
           </ul>
