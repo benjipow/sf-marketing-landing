@@ -14,7 +14,6 @@ export function Footer() {
           <h3 className="text-2xl font-serif font-bold mb-8">
             BENJIPOW<span className="text-primary text-xs align-top">®</span>
           </h3>
-        
         </div>
 
         <div>
@@ -24,12 +23,12 @@ export function Footer() {
           <ul className="space-y-4 text-sm text-muted-foreground">
             <li>
               <a href="#" className="hover:text-primary transition-colors">
-               Google & AI Visibility
+                Google & AI Visibility
               </a>
             </li>
             <li>
               <a href="#" className="hover:text-primary transition-colors">
-               Brand Strategy & Messaging
+                Brand Strategy & Messaging
               </a>
             </li>
             <li>
@@ -42,9 +41,7 @@ export function Footer() {
                 Graphics & Media
               </a>
             </li>
-                        </li>
           </ul>
-        </div>
         </div>
 
         <div>
